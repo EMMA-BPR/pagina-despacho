@@ -1,891 +1,774 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<title>Cervantes Abogados y Asociados</title>
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
-
-
-<style>
-
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-/* LINEAS DECORATIVAS DERECHA */
-
-body::after{
-content:"";
-position:absolute;
-top:100vh;
-right:60px;
-width:6px;
-height:3000px;
-background:var(--dorado);
-z-index:-1;
-}
-
-body::before{
-content:"";
-position:absolute;
-top:100vh;
-right:80px;
-width:6px;
-height:3000px;
-background:var(--dorado);
-opacity:0.7;
-z-index:-1;
-}
-
-/* COLORES DEL DESPACHO */
-
-:root{
---azul-oscuro:#0B2545;
---azul:#2F5D8C;
---dorado:#C8A96A;
---blanco:#F8F9FB;
---gris:#2E2E2E;
-}
-
-/* NAVBAR */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:var(--azul-oscuro);
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-transition:0.3s;
-}
-
-nav.scrolled{
-padding:12px 40px;
-background:#081a30;
-box-shadow:0 5px 20px rgba(0,0,0,0.3);
-}
-
-nav h1{
-color:white;
-font-size:20px;
-letter-spacing:1px;
-}
-
-.logo-texto{
-font-family:'Imperial Script', cursive;
-font-size:30px;
-color:var(--dorado);
-letter-spacing:1px;
-}
-
-.cervantes{
-font-family:'Imperial Script', cursive;
-font-size:46px;
-color:var(--dorado);
-margin-right:8px;
-}
-
-/* LOGO DEL NAVBAR */
-
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo img{
-width:30px;
-height:30px;
-}
-
-nav ul{
-list-style:none;
-display:flex;
-gap:25px;
-}
-
-nav ul li a{
-color:white;
-text-decoration:none;
-font-size:14px;
-transition:0.3s;
-}
-
-nav ul li a:hover{
-color:var(--dorado);
-}
-
-nav ul li:hover{
-color:var(--dorado);
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-padding:40px;
-position:relative;
-overflow:hidden;
-
-background:
-linear-gradient(rgba(11,37,69,0.9),rgba(11,37,69,0.9)),
-url("https://images.unsplash.com/photo-1589994965851-a8f479c573a9");
-
-background-size:cover;
-background-position:center;
-}
-
-.video-fondo{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:0;
-}
-
-.contenido-hero{
-max-width:900px;
-position:relative;
-z-index:2;
-}
-
-.hero h2{
-font-size:64px;
-margin-bottom:25px;
-font-family:'Playfair Display', serif;
-letter-spacing:1px;
-line-height:1.2;
-}
-
-.hero p{
-font-size:20px;
-max-width:700px;
-margin:auto;
-margin-bottom:30px;
-}
-
-.hero button,
-.hero a{
-padding:14px 30px;
-font-size:16px;
-border:none;
-margin:10px;
-cursor:pointer;
-border-radius:4px;
-text-decoration:none;
-display:inline-block;
-}
-
-.btn1{
-background:var(--dorado);
-color:black;
-}
-
-.btn2{
-background:transparent;
-border:2px solid white;
-color:white;
-}
-
-.hero button:hover{
-opacity:0.9;
-}
-
-/* SECCIONES */
-
-section{
-padding:80px 10%;
-}
-
-.titulo{
-font-family:'Playfair Display', serif;
-font-size:48px;
-margin-bottom:25px;
-color:var(--azul-oscuro);
-letter-spacing:1px;
-position:relative;
-}
-.titulo::after{
-content:"";
-display:block;
-width:70px;
-height:4px;
-background:var(--dorado);
-margin-top:10px;
-border-radius:2px;
-}
-
-.texto{
-max-width:900px;
-line-height:1.6;
-color:var(--gris);
-}
-
-/* TARJETAS SERVICIOS */
-
-.servicios{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.12);
-transition:all 0.35s ease;
-border-top:4px solid var(--dorado);
-position:relative;
-overflow:hidden;
-}
-
-.card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 40px rgba(0,0,0,0.18);
-}
-
-.card h3{
-margin-bottom:10px;
-color:var(--azul);
-}
-
-/* TARJETAS DORADAS */
-
-.card.dorada{
-background:var(--dorado);
-color:black;
-border-top:none;
-}
-
-.card.dorada h3{
-color:black;
-}
-
-.card.dorada:hover{
-background:#b89554;
-}
-.servicios .card:nth-child(1),
-.servicios .card:nth-child(2),
-.servicios .card:nth-child(3){
-border-top:4px solid var(--dorado);
-}
-
-footer{
-background:var(--azul-oscuro);
-color:white;
-text-align:center;
-padding:40px;
-margin-top:200px;
-}
-
-.whatsapp-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-width:70px;
-height:70px;
-z-index:1000;
-}
-
-.whatsapp-btn img{
-width:100%;
-height:100%;
-}
-
-.whatsapp-btn:hover{
-transform:scale(1.1);
-transition:0.3s;
-}
-
-.calendario{
-margin:30px auto;
-background:white;
-padding:25px;
-border-radius:8px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-max-width:400px;
-}
-
-.selector-fecha label{
-display:block;
-margin-bottom:10px;
-font-weight:bold;
-}
-
-.selector-fecha input{
-padding:12px;
-font-size:16px;
-border-radius:6px;
-border:1px solid #ccc;
-width:100%;
-}
-
-.calendario input{
-padding:12px;
-font-size:16px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-.agenda{
-margin-top:40px;
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-}
-
-.hora{
-padding:15px 25px;
-border:none;
-background:var(--azul);
-color:white;
-border-radius:6px;
-cursor:pointer;
-font-size:16px;
-transition:0.3s;
-}
-
-.hora:hover{
-background:var(--dorado);
-color:black;
-}
-
-/* MENU MOVIL */
-
-.menu-toggle{
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
-}
-
-/* AJUSTES PARA TELEFONO */
-
-@media (max-width:768px){
-
-nav{
-padding:15px 20px;
-}
-
-nav h1{
-font-size:16px;
-}
-
-nav ul{
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:var(--azul-oscuro);
-flex-direction:column;
-align-items:center;
-display:none;
-padding:20px 0;
-}
-
-nav ul li{
-margin:10px 0;
-}
-
-nav ul.active{
-display:flex;
-}
-
-.menu-toggle{
-display:block;
-}
-
-/* HERO AJUSTE TELEFONO */
-
-.hero h2{
-font-size:34px;
-}
-
-.hero p{
-font-size:16px;
-}
-
-/* BOTONES HERO */
-
-.hero a,
-.hero button{
-font-size:14px;
-padding:10px 20px;
-}
-
-}
-
-.hero a,
-.hero button{
-font-size:14px;
-padding:10px 20px;
-}
-
-
-/* ANIMACIONES SCROLL */
-
-.animar{
-opacity:0;
-transform:translateY(60px);
-transition:all 0.8s ease;
-}
-
-.animar.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.animar.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.animar.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.animar.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-
-/* CONTENEDOR CONTACTO */
-
-.contacto-contenedor{
-display:flex;
-gap:40px;
-margin-top:40px;
-flex-wrap:wrap;
-}
-
-/* TARJETA */
-
-.contacto-tarjeta{
-background:white;
-padding:40px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-flex:1;
-min-width:300px;
-border-left:6px solid var(--dorado);
-}
-
-.contacto-tarjeta h3{
-margin-bottom:20px;
-color:var(--azul-oscuro);
-}
-
-.contacto-tarjeta ul{
-list-style:none;
-}
-
-.contacto-tarjeta li{
-margin-bottom:15px;
-font-size:16px;
-color:var(--gris);
-}
-
-/* ICONOS */
-
-.contacto-tarjeta i{
-color:var(--dorado);
-margin-right:10px;
-}
-
-/* AREA MAPA */
-
-.contacto-mapa{
-flex:1;
-min-width:300px;
-background:#eaeaea;
-border-radius:12px;
-min-height:250px;
-}
-
-.contenedor-citas{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:40px;
-flex-wrap:wrap;
-}
-
-.buho-citas{
-width:400px;
-max-width:100%;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Cervantes Abogados y Asociados</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+
+    <style>
+        /* RESET */
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        /* COLORES DEL DESPACHO */
+        :root{
+            --azul-oscuro:#0B2545;
+            --azul:#2F5D8C;
+            --dorado:#C8A96A;
+            --blanco:#F8F9FB;
+            --gris:#2E2E2E;
+        }
+
+        body {
+            background-color: var(--blanco);
+            overflow-x: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        /* LÍNEAS DECORATIVAS CORREGIDAS (Se adaptan al tamaño real de la página) */
+        body::after{
+            content:"";
+            position:absolute;
+            top:100vh;
+            bottom: 0; /* Cambio clave: llega hasta el final real sin importar la altura */
+            right:60px;
+            width:6px;
+            background:var(--dorado);
+            z-index:-1;
+        }
+
+        body::before{
+            content:"";
+            position:absolute;
+            top:100vh;
+            bottom: 0; /* Cambio clave: llega hasta el final real sin importar la altura */
+            right:80px;
+            width:6px;
+            background:var(--dorado);
+            opacity:0.7;
+            z-index:-1;
+        }
+
+        /* NAVBAR */
+        nav{
+            position:fixed;
+            top:0;
+            width:100%;
+            background:var(--azul-oscuro);
+            padding:20px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            z-index:1000;
+            transition:0.3s;
+        }
+
+        nav.scrolled{
+            padding:12px 40px;
+            background:#081a30;
+            box-shadow:0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo-texto{
+            font-family:'Imperial Script', cursive;
+            font-size:38px;
+            color:var(--dorado);
+            letter-spacing:1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cervantes{
+            font-family:'Imperial Script', cursive;
+            font-size:46px;
+            color:var(--dorado);
+            margin-right:8px;
+        }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:25px;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+            font-size:14px;
+            font-weight: 400;
+            transition:0.3s;
+        }
+
+        nav ul li a:hover{
+            color:var(--dorado);
+        }
+
+        /* HERO */
+        .hero{
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:white;
+            padding:40px;
+            position:relative;
+            overflow:hidden;
+            background: linear-gradient(rgba(11,37,69,0.85),rgba(11,37,69,0.85)), url("https://images.unsplash.com/photo-1589994965851-a8f479c573a9");
+            background-size:cover;
+            background-position:center;
+        }
+
+        .contenido-hero{
+            max-width:900px;
+            position:relative;
+            z-index:2;
+        }
+
+        .hero h2{
+            font-size:60px;
+            margin-bottom:25px;
+            font-family:'Playfair Display', serif;
+            letter-spacing:1px;
+            line-height:1.2;
+        }
+
+        .hero p{
+            font-size:20px;
+            max-width:700px;
+            margin:auto;
+            margin-bottom:30px;
+            font-weight: 300;
+        }
+
+        .hero a{
+            padding:14px 30px;
+            font-size:16px;
+            border:none;
+            margin:10px;
+            cursor:pointer;
+            border-radius:4px;
+            text-decoration:none;
+            display:inline-block;
+            transition: 0.3s;
+        }
+
+        .btn1{
+            background:var(--dorado);
+            color:black;
+            font-weight: 600;
+        }
+
+        .btn2{
+            background:transparent;
+            border:2px solid white;
+            color:white;
+        }
+
+        .hero a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* SECCIONES */
+        section{
+            padding:80px 10%;
+        }
+
+        .titulo{
+            font-family:'Playfair Display', serif;
+            font-size:42px;
+            margin-bottom:15px;
+            color:var(--azul-oscuro);
+            letter-spacing:1px;
+            position:relative;
+        }
+
+        .titulo::after{
+            content:"";
+            display:block;
+            width:70px;
+            height:4px;
+            background:var(--dorado);
+            margin-top:10px;
+            border-radius:2px;
+        }
+
+        .texto{
+            max-width:900px;
+            line-height:1.8;
+            color:var(--gris);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* SERVICIOS */
+        .servicios{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:25px;
+            margin-top:35px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.08);
+            transition:all 0.35s ease;
+            border-top:4px solid var(--azul);
+            position:relative;
+            overflow:hidden;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 15px 35px rgba(11,37,69,0.15);
+            border-top-color: var(--dorado);
+        }
+
+        .card i {
+            font-size: 24px;
+            color: var(--dorado);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3{
+            margin-bottom:12px;
+            color:var(--azul-oscuro);
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            font-size: 14px;
+            color: var(--gris);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+            line-height: 1.4;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: var(--dorado);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* TARJETAS DESTACADAS */
+        .card.dorada{
+            background: linear-gradient(135deg, var(--dorado), #b89554);
+            color: white;
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .card.dorada i {
+            color: var(--azul-oscuro);
+            font-size: 32px;
+        }
+
+        .card.dorada h3{
+            color: var(--azul-oscuro);
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .card.dorada p{
+            color: var(--azul-oscuro);
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .card.dorada:hover{
+            transform: translateY(-8px);
+            box-shadow:0 15px 35px rgba(200,169,106,0.4);
+        }
+
+        /* CONTACTO */
+        .contacto-contenedor{
+            display:flex;
+            gap:40px;
+            margin-top:40px;
+            flex-wrap:wrap;
+        }
+
+        .contacto-tarjeta{
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+            flex:1;
+            min-width:300px;
+            border-left:6px solid var(--dorado);
+        }
+
+        .contacto-tarjeta h3{
+            margin-bottom:20px;
+            color:var(--azul-oscuro);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contacto-tarjeta ul{
+            list-style:none;
+        }
+
+        .contacto-tarjeta li{
+            margin-bottom:15px;
+            font-size:16px;
+            color:var(--gris);
+        }
+
+        .contacto-tarjeta i{
+            color:var(--dorado);
+            margin-right:10px;
+        }
+
+        .contacto-mapa{
+            flex:1;
+            min-width:300px;
+            background:#eaeaea;
+            border-radius:12px;
+            min-height:250px;
+        }
+
+        /* CITAS */
+        .contenedor-citas{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:40px;
+            flex-wrap:wrap;
+        }
+
+        .calendario{
+            margin:30px auto;
+            background:white;
+            padding:25px;
+            border-radius:8px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+            max-width:400px;
+            width: 100%;
+        }
+
+        .selector-fecha label{
+            display:block;
+            margin-bottom:10px;
+            font-weight:bold;
+            color: var(--azul-oscuro);
+        }
+
+        .selector-fecha input{
+            padding:12px;
+            font-size:16px;
+            border-radius:6px;
+            border:1px solid #ccc;
+            width:100%;
+        }
+
+        .agenda{
+            margin-top:25px;
+            display:grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap:12px;
+            justify-content:center;
+        }
+
+        .hora{
+            padding:12px;
+            border:1px solid var(--azul);
+            background: transparent;
+            color: var(--azul);
+            border-radius:6px;
+            cursor:pointer;
+            font-size:14px;
+            font-weight: 600;
+            transition:0.3s;
+        }
+
+        .hora:hover{
+            background:var(--azul);
+            color:white;
+        }
+
+        .buho-citas{
+            width:350px;
+            max-width:100%;
+            opacity: 0.85;
+        }
+
+        /* FOOTER */
+        footer{
+            background:var(--azul-oscuro);
+            color:white;
+            text-align:center;
+            padding:40px;
+        }
+
+        /* BOTON FLOATING WHATSAPP */
+        .whatsapp-btn{
+            position:fixed;
+            bottom:25px;
+            right:25px;
+            width:65px;
+            height:65px;
+            z-index:1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn img{
+            width:100%;
+            height:100%;
+        }
+
+        .whatsapp-btn:hover{
+            transform:scale(1.1) rotate(5deg);
+        }
+
+        /* MENU MOVIL */
+        .menu-toggle{
+            display:none;
+            font-size:28px;
+            color:white;
+            cursor:pointer;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width:768px){
+            nav{ padding:15px 20px; }
+            .logo-texto{ font-size:28px; }
+            .cervantes{ font-size:34px; }
+            nav ul{
+                position:absolute;
+                top:70px;
+                left:0;
+                width:100%;
+                background:var(--azul-oscuro);
+                flex-direction:column;
+                align-items:center;
+                display:none;
+                padding:20px 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            nav ul li{ margin:10px 0; }
+            nav ul.active{ display:flex; }
+            .menu-toggle{ display:block; }
+            .hero h2{ font-size:36px; }
+            .hero p{ font-size:16px; }
+            section { padding: 60px 5%; }
+            .titulo { font-size: 32px; }
+            body::after, body::before { display: none; }
+        }
+
+        /* ANIMACIONES SCROLL */
+        .animar{
+            opacity:0;
+            transform:translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animar.visible{
+            opacity:1;
+            transform:translateY(0);
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
-
-<h1 class="logo-texto">🦉 <span class="cervantes">Cervantes</span> Abogados y Asociados</h1>
-<div class="menu-toggle">☰</div>
-
-<ul>
-
-<li><a href="#">Inicio</a></li>
-<li><a href="#laboral">Laboral</a></li>
-<li><a href="#familiar">Familiar</a></li>
-<li><a href="#sobre">Nosotros</a></li>
-<li><a href="#contacto">Contacto</a></li>
-
-</ul>
-
+    <h1 class="logo-texto">
+        <img src="img/buho-dorado.png" alt="Logo" style="width: 45px; height: auto; margin-right: 12px; vertical-align: middle;"> 
+        <span class="cervantes">Cervantes</span> Abogados y Asociados
+    </h1>
+    <div class="menu-toggle">☰</div>
+    <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#civil-familiar">Civil y Familiar</a></li>
+        <li><a href="#laboral">Laboral</a></li>
+        <li><a href="#notarial">Notarial y Registral</a></li>
+        <li><a href="#sobre">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
 </nav>
 
-
-<!-- HERO PRINCIPAL -->
-
 <div class="hero">
-
-
-<div class="contenido-hero">
-
-<h2>Sabiduría, Justicia y Protección Legal</h2>
-
-<p>
-En Jurídico Búho Dorado brindamos asesoría y representación legal con un enfoque humano,
-estratégico y ético para trabajadores, empresas y familias.
-</p>
-
-<a href="#citas" class="btn1">Agendar Consulta</a>
-
-<a href="https://wa.me/527224005244" class="btn2" target="_blank">WhatsApp</a>
-
+    <div class="contenido-hero">
+        <h2>Sabiduría, Justicia y Protección Legal</h2>
+        <p>En Cervantes Abogados y Asociados brindamos asesoría y representación legal con un enfoque humano, estratégico y ético para trabajadores, empresas y familias.</p>
+        <a href="#citas" class="btn1">Agendar Consulta</a>
+        <a href="https://wa.me/527224005244" class="btn2" target="_blank">WhatsApp</a>
+    </div>
 </div>
-
-</div>
-
-
-<!-- SOBRE NOSOTROS -->
 
 <section id="sobre" class="animar">
-<h2 class="titulo">Sobre Nuestro Despacho</h2>
-
-<p class="texto">
-
-En Jurídico Búho Dorado brindamos asesoría y representación legal con un enfoque humano,
-estratégico y ético. Nuestra misión es defender los derechos de trabajadores,
-empresas y familias con profesionalismo, compromiso y absoluta confidencialidad.
-
-Cada caso es tratado con sabiduría, estrategia jurídica y dedicación.
-
-</p>
-
+    <h2 class="titulo">Sobre Nuestro Despacho</h2>
+    <p class="texto">
+        En Cervantes Abogados y Asociados brindamos asesoría y representación legal con un enfoque humano, estratégico y ético. Nuestra misión es defender los derechos de trabajadores, empresas y familias con profesionalismo, compromiso y absoluta confidencialidad.
+        <br><br>
+        Cada caso es tratado con sabiduría, estrategia jurídica y dedicación integral para garantizarle un camino claro hacia la justicia.
+    </p>
 </section>
 
+<section id="civil-familiar" class="animar">
+    <h2 class="titulo">Derecho Civil y Familiar</h2>
+    <p class="texto">Protegemos su patrimonio, regulamos sus entornos contractuales y brindamos acompañamiento integral en las etapas de transición familiar más importantes.</p>
+    
+    <div class="servicios">
+        <div class="card">
+            <i class="fa-solid fa-children"></i>
+            <h3>Procesos Familiares</h3>
+            <ul>
+                <li>Divorcios</li>
+                <li>Pensión alimenticia</li>
+                <li>Pérdida de la patria potestad</li>
+                <li>Guarda y custodia</li>
+                <li>Adopciones</li>
+                <li>Acreditación de concubinato</li>
+                <li>Reducción de pensión alimentaria</li>
+            </ul>
+        </div>
 
-<!-- DERECHO LABORAL -->
+        <div class="card">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <h3>Patrimonio y Contratos</h3>
+            <ul>
+                <li>Sucesiones testamentarias e intestamentarias</li>
+                <li>Escrituras</li>
+                <li>Arrendamiento</li>
+                <li>Contratos de todo tipo</li>
+                <li>Donaciones</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-house-shield"></i>
+            <h3>Derecho Inmobiliario</h3>
+            <ul>
+                <li>Compra venta de bienes inmuebles</li>
+                <li>Hipotecas y garantías</li>
+                <li>Rectificación, nulidad o aclaración de actas de nacimiento</li>
+                <li>Identidad de persona</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 <section id="laboral" class="animar">
-<h2 class="titulo">Derecho Laboral</h2>
+    <h2 class="titulo">Derecho Laboral</h2>
+    <p class="texto">Asesoría jurídica especializada orientada tanto al sector corporativo para prevención de riesgos, como al amparo y defense integral de los derechos de los trabajadores.</p>
+    
+    <div class="servicios">
+        <div class="card">
+            <i class="fa-solid fa-briefcase"></i>
+            <h3>Defensa del Trabajador</h3>
+            <ul>
+                <li>Despidos injustificados</li>
+                <li>Riesgos y accidentes de trabajo</li>
+                <li>Cálculo e impugnación de Finiquitos</li>
+                <li>Liquidaciones de ley</li>
+                <li>Acompañamiento integral personalizado</li>
+            </ul>
+        </div>
 
-<div class="servicios">
+        <div class="card">
+            <i class="fa-solid fa-building-shield"></i>
+            <h3>Asesoría Empresarial Patrón</h3>
+            <ul>
+                <li>Asesorías especializadas a patrones</li>
+                <li>Elaboración de Reglamento interno de trabajo</li>
+                <li>Trámites y normatividad REPSE</li>
+                <li>Diseño y blindaje de Contratos colectivos e individuales</li>
+            </ul>
+        </div>
 
-<div class="card">
-<h3><i class="fa-solid fa-scale-balanced"></i> Despidos injustificados</h3>
-<p>Defensa legal para trabajadores que han sido despedidos sin justificación.</p>
-</div>
+        <div class="card">
+            <i class="fa-solid fa-gavel"></i>
+            <h3>Representación Legal</h3>
+            <ul>
+                <li>Representación directa ante Centros de Conciliación</li>
+                <li>Desarrollo y litigio de juicios ante Tribunales competentes</li>
+                <li>Garantía de soluciones efectivas</li>
+            </ul>
+        </div>
+    </div>
 
-<div class="card">
-<h3><i class="fa-solid fa-user-injured"></i> Accidentes de trabajo</h3>
-<p>Representación para exigir indemnizaciones y protección de tus derechos.</p>
-</div>
-
-<div class="card">
-<h3><i class="fa-solid fa-calculator"></i> Cálculo de finiquito</h3>
-<p>Revisión y cálculo correcto de prestaciones laborales.</p>
-</div>
-
-<div class="card">
-<h3><i class="fa-solid fa-file-signature"></i> Liquidaciones</h3>
-<p>Asesoría y representación en procesos de terminación laboral.</p>
-</div>
-
-</div>
-
+    <div class="servicios" style="margin-top: 40px;">
+        <div class="card dorada">
+            <i class="fa-solid fa-user-shield"></i>
+            <h3>Asesoría Preventiva</h3>
+            <p>¡Ofrecemos asesorías preventivas a empresas para mitigar riesgos legales antes de que se conviertan en un problema!</p>
+        </div>
+        <div class="card dorada">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Soluciones Efectivas</h3>
+            <p>Brindamos acompañamiento integral garantizando soluciones completamente personalizadas a cada cliente.</p>
+        </div>
+    </div>
 </section>
 
-<!-- SERVICIOS JURÍDICOS -->
+<section id="notarial" class="animar">
+    <h2 class="titulo">Trámites Notariales y Registrales</h2>
+    <p class="texto">Le apoyamos formalmente en la regularización jurídica de sus bienes raíces y estructuras ejudiciales para darle certeza legal definitiva a su propiedad.</p>
+    
+    <div class="servicios">
+        <div class="card">
+            <i class="fa-solid fa-file-contract"></i>
+            <h3>Regularización de Escrituras</h3>
+            <p>Análisis técnico y corrección de la situación legal e inscripciones de tus títulos de propiedad.</p>
+        </div>
 
-<section class="animar">
-<h2 class="titulo">Servicios Jurídicos</h2>
+        <div class="card">
+            <i class="fa-solid fa-signature"></i>
+            <h3>Inmatriculaciones</h3>
+            <p>Inscripción formal de bienes inmuebles por primera vez ante el Instituto de la Función Registral.</p>
+        </div>
 
-<div class="servicios">
-
-<div class="card dorada">
-<h3>Asesorías a empresas y empleados</h3>
-<p>
-Orientación jurídica especializada para empresas y trabajadores. 
-Analizamos cada caso para ofrecer soluciones legales claras, 
-preventivas y estratégicas que protejan tus derechos.
-</p>
-</div>
-
-<div class="card dorada">
-<h3>Procedimientos conciliatorios</h3>
-<p>
-Representación y acompañamiento durante procesos de conciliación 
-laboral para buscar acuerdos justos entre trabajadores y 
-empleadores antes de llegar a juicio.
-</p>
-</div>
-
-<div class="card dorada">
-<h3>Atención a juicios</h3>
-<p>
-Defensa y representación legal durante procesos judiciales 
-laborales y familiares, preparando estrategias jurídicas 
-sólidas para proteger tus intereses.
-</p>
-</div>
-
-</div>
-
+        <div class="card">
+            <i class="fa-solid fa-building-columns"></i>
+            <h3>Juicios de Usucapión</h3>
+            <p>Tramitación experta de escrituras por usucapión a través de la vía judicial o de forma notarial.</p>
+        </div>
+    </div>
 </section>
-
-<!-- DERECHO FAMILIAR -->
-
-<section id="familiar" class="animar">
-<h2 class="titulo">Derecho Familiar</h2>
-
-<div class="servicios">
-
-<div class="card">
-<h3><i class="fa-solid fa-heart-crack"></i> Divorcios</h3>
-<p>Trámite y asesoría completa en procesos de divorcio.</p>
-</div>
-
-<div class="card">
-<h3><i class="fa-solid fa-scroll"></i> Sucesiones</h3>
-<p>Gestión legal de herencias y sucesiones familiares.</p>
-</div>
-
-<div class="card">
-<h3><i class="fa-solid fa-file-lines"></i> Rectificación de actas</h3>
-<p>Corrección legal de documentos oficiales.</p>
-</div>
-
-<div class="card">
-<h3><i class="fa-solid fa-child"></i> Adopciones</h3>
-<p>Acompañamiento legal en procesos de adopción.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACTO -->
 
 <section id="contacto" class="animar">
+    <h2 class="titulo">Contacto</h2>
+    <div class="contacto-contenedor">
+        <div class="contacto-tarjeta">
+            <h3>Información de contacto</h3>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i> 722 400 5244</li>
+                <li><i class="fa-solid fa-phone"></i> 722 496 3285</li>
+                <li><i class="fa-solid fa-envelope"></i> buhodorado.juridico4@outlook.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Toluca, Estado de México</li>
+            </ul>
+        </div>
 
-<h2 class="titulo">Contacto</h2>
-
-<div class="contacto-contenedor">
-
-<div class="contacto-tarjeta">
-
-<h3>Información de contacto</h3>
-
-<ul>
-
-<li><i class="fa-solid fa-phone"></i> 722 400 5244</li>
-<li><i class="fa-solid fa-phone"></i> 722 496 3285</li>
-
-<li><i class="fa-solid fa-envelope"></i> buhodorado.juridico4@outlook.com</li>
-
-<li><i class="fa-solid fa-location-dot"></i> Toluca, Estado de México</li>
-
-</ul>
-
-</div>
-
-<div class="contacto-mapa">
-
-<iframe
-width="100%"
-height="100%"
-style="border:0; border-radius:12px;"
-loading="lazy"
-allowfullscreen
-referrerpolicy="no-referrer-when-downgrade"
-src="https://www.google.com/maps?q=Toluca,Estado+de+Mexico&output=embed">
-</iframe>
-
-</div>
-
-</div>
-
+        <div class="contacto-mapa">
+            <iframe
+                width="100%"
+                height="100%"
+                style="border:0; border-radius:12px;"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Toluca,%20Estado%20de%20M%C3%A9xico&t=&z=13&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+        </div>
+    </div>
 </section>
 
 <section id="citas" class="animar">
+    <h2 class="titulo">Agendar Consulta</h2>
+    <p class="texto">Seleccione un horario disponible para su consulta jurídica. Las consultas se programan cada 2 hours.</p>
+    
+    <div class="contenedor-citas">
+        <div class="calendario">
+            <div class="selector-fecha">
+                <label>Seleccione el día:</label>
+                <input type="date" id="fecha-cita">
+            </div>
+            <div class="agenda">
+                <button class="hora">10:00 AM</button>
+                <button class="hora">12:00 PM</button>
+                <button class="hora">02:00 PM</button>
+                <button class="hora">04:00 PM</button>
+                <button class="hora">06:00 PM</button>
+                <button class="hora">08:00 PM</button>
+            </div>
+        </div>
 
-<h2 class="titulo">Agendar Consulta</h2>
-
-<p class="texto">
-Seleccione un horario disponible para su consulta jurídica. 
-Las consultas se programan cada 2 horas.
-</p>
-<div class="contenedor-citas">
-
-<div class="calendario">
-
-<div class="selector-fecha">
-<label>Seleccione el día:</label>
-<input type="date" id="fecha-cita">
-</div>
-
-<div class="agenda">
-
-<button class="hora">10:00 AM</button>
-<button class="hora">12:00 PM</button>
-<button class="hora">02:00 PM</button>
-<button class="hora">04:00 PM</button>
-<button class="hora">06:00 PM</button>
-<button class="hora">08:00 PM</button>
-
-</div>
-
-</div>
-
-<img src="img/buho-dorado.png" class="buho-citas">
-
-</div>
-
+        <img src="img/buho-dorado.png" alt="Búho Dorado" class="buho-citas">
+    </div>
 </section>
 
 <footer>
-
-<p>© 2026 Jurídico Búho Dorado | Todos los derechos reservados</p>
-
+    <p>© 2026 Cervantes Abogados y Asociados | Todos los derechos reservados</p>
 </footer>
 
-<script>
-
-window.addEventListener("scroll", function(){
-
-const nav = document.querySelector("nav");
-
-if(window.scrollY > 50){
-nav.classList.add("scrolled");
-}else{
-nav.classList.remove("scrolled");
-}
-
-});
-
-</script>
-<script>
-
-const toggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector("nav ul");
-
-toggle.addEventListener("click", () => {
-menu.classList.toggle("active");
-});
-
-</script>
-
 <a href="https://wa.me/527224005244" class="whatsapp-btn" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <script>
+window.addEventListener("scroll", function(){
+    const nav = document.querySelector("nav");
+    if(window.scrollY > 50){
+        nav.classList.add("scrolled");
+    }else{
+        nav.classList.remove("scrolled");
+    }
+});
+
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector("nav ul");
+toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
 
 const botones = document.querySelectorAll(".hora");
-
 botones.forEach(boton => {
-
-boton.addEventListener("click", function(){
-
-const hora = this.innerText;
-
-const fecha = document.getElementById("fecha-cita").value;
-
-if(!fecha){
-alert("Por favor selecciona primero una fecha.");
-return;
-}
-
-const mensaje = "Hola, quiero agendar una consulta jurídica el " + fecha + " a las " + hora;
-
-window.open("https://wa.me/527224005244?text=" + encodeURIComponent(mensaje));
-
+    boton.addEventListener("click", function(){
+        const hora = this.innerText;
+        const fecha = document.getElementById("fecha-cita").value;
+        if(!fecha){
+            alert("Por favor selecciona primero una fecha.");
+            return;
+        }
+        const mensaje = "Hola, quiero agendar una consulta jurídica el " + fecha + " a las " + hora;
+        window.open("https://wa.me/527224005244?text=" + encodeURIComponent(mensaje));
+    });
 });
-
-});
-
-</script>
-<script>
 
 function revelar(){
+    const elementos = document.querySelectorAll(".animar");
 
-const elementos = document.querySelectorAll(".animar");
+    for(let i = 0; i < elementos.length; i++){
+        const ventanaAltura = window.innerHeight;
+        const elementoTop = elementos[i].getBoundingClientRect().top;
+        const punto = 40; 
 
-for(let i=0;i<elementos.length;i++){
-
-const ventanaAltura = window.innerHeight;
-const elementoTop = elementos[i].getBoundingClientRect().top;
-const punto = 100;
-
-if(elementoTop < ventanaAltura - punto){
-elementos[i].classList.add("visible");
-}
-
-}
-
+        if(elementoTop < ventanaAltura - punto){
+            elementos[i].classList.add("visible");
+        }
+    }
 }
 
 window.addEventListener("scroll", revelar);
-
+window.addEventListener("DOMContentLoaded", revelar); 
+window.addEventListener("load", revelar); 
 </script>
 
-
 </body>
-
 </html>
